@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/solicitudes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Consulta de crédito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #solservicios="ngForm" (ngSubmit)="onSubmit()">
+    <ion-list class="espacio">
+      <input type="number" class="form-control" id="monto" name="monto" [(ngModel)]="consulcred.monto" placeholder="Monto" required >
+    </ion-list>
+    <ion-list>
+      <select name="linea" id="linea" class="form-control" [(ngModel)]="consulcred.linea" required (change)="getPlazos($event)" >
+        <option value="" disabled >Línea de crédito</option>
+        <option *ngFor="let linea of lineas" value="{{linea.cons_licr}}">{{linea.nomb_licr}}</option>
+      </select>
+    </ion-list>
+    <ion-list>
+      <select name="plazo" id="plazo" class="form-control" [(ngModel)]="consulcred.plazo" required >
+        <option value="" disabled>Plazo</option>
+        <option *ngFor="let plazo of plazos" value="{{plazo.plin_mese}}">{{plazo.plin_mese}}</option>
+      </select>
+    </ion-list>
+    <ion-list>
+      <select name="frecuencia" id="frecuencia" class="form-control" [(ngModel)]="consulcred.frecuencia" required>
+        <option value="" disabled>Frecuencia</option>
+        <option value="M">Mensual</option>
+        <option value="Q">Quincenal</option>
+      </select>
+    </ion-list>
+    <ion-list class="espacio">
+      <input type="number" class="form-control" id="telfono" name="telefono" [(ngModel)]="consulcred.telefono" placeholder="Teléfono de contacto" required >
+    </ion-list>
+    <ion-list class="espacio">
+      <input type="number" class="form-control" id="celular" name="celular" [(ngModel)]="consulcred.celular" placeholder="Celular de contacto" required >
+    </ion-list>
+
+    <ion-grid class="espacio">
+      <div style="padding-left: 20px; padding-right: 20px; background-color: transparent" align="center">
+        <button type="submit" [disabled]="solservicios.invalid" class="btn btn-outline-danger">Enviar</button>
+      </div>
+    </ion-grid>
+
+
+  </form>
+
+</ion-content>

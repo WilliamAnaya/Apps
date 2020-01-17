@@ -1,0 +1,28 @@
+[
+  {
+    "icon": "/assets/bolso.svg",
+    "name": "Aportes",
+    "redirectTo": "/tabs/home"
+  },
+  {
+    "icon": "/assets/ahorro.svg",
+    "name": "Ahorros",
+    "redirectTo": "/tabs/ahorros"
+  },
+  {
+    "icon": "/assets/cartera.svg",
+    "name": "Cartera",
+    "redirectTo": "/tabs/cartera"
+  },
+  {
+    "icon": "/assets/presupuesto.svg",
+    "name": "Simulador de crédito",
+    "redirectTo": "/tabs/simulador"
+  },
+  {
+    "icon": "/assets/activo.svg",
+    "name": "Notificaciones",
+    "redirectTo": "/tabs/notificaciones"
+  }
+
+]

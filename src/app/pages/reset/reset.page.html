@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button slot="start" defaultHref="/login"></ion-back-button>
+    <ion-title>Recuperar contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="login">
+
+    <div class="box">
+      <div>
+        <ion-grid class="padding" padding>
+          <ion-row>
+            <ion-col col-12 ion-item no-lines no-padding text-center align="center"><img src="/assets/ultima.png" alt="" height="70px" align="center"></ion-col>
+          </ion-row>
+
+        </ion-grid>
+
+        <form #formularioreset="ngForm" (ngSubmit)="onSubmit(formularioreset)">
+          <ion-list>
+
+            <div class="col-12 col-lg-8 col-md-8 offset-md-2" style="padding-top: 15%">
+              <ion-input type="text" class="form-control" padding value="" name="usuario" [(ngModel)]="user.usuario" required placeholder="Usuario"></ion-input>
+            </div>
+
+          </ion-list>
+
+          <div class="col-12 col-lg-8 col-md-8 offset-md-2">
+              <ion-button expand="full" type="sudmit" [disabled]="formularioreset.invalid">Recuperar</ion-button>
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

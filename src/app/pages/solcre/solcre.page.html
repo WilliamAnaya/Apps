@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/solicitudes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Solicitud de crédito rotativo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card padding color="primary">
+    <ion-label>
+      <span>Si es la primera vez que usa este servicio de crédito debe diligenciar los documentos de crédito por única vez</span>
+    </ion-label>
+  </ion-card>
+  <form #solicitudcred="ngForm" (ngSubmit)="onSubmit()" *ngIf="noexisterotativo">
+    <ion-list class="espacio">
+        <ion-label align="center" style="padding-bottom: 20px">Cupo maxímo: {{identity.cupomaximo | number}}</ion-label>
+      <input type="number" class="form-control" id="monto" name="monto" [(ngModel)]="solcre.monto" placeholder="Monto" [max]="identity.cupomaximo" required  >
+    </ion-list>
+
+    <ion-grid class="espacio" style="padding-top:20px">
+      <div style="padding-left: 20px; padding-right: 20px; background-color: transparent" align="center">
+        <button type="submit" [disabled]="solicitudcred.invalid" class="btn btn-outline-danger" >Solicitar</button>
+      </div>
+    </ion-grid>
+  </form>
+
+  <form #solicituddesembolso="ngForm" (ngSubmit)="solcitardesembolso()" *ngIf="existerotativo">
+    <ion-list class="espacio">
+      <ion-label align="center" style="padding-bottom: 20px">Disponible: {{existerotativo.disponible | number}}</ion-label>
+      <input type="number" class="form-control" id="montosolicitar" name="montosolicitar" [(ngModel)]="solcre.monto" placeholder="Monto a desembolsar" [max]="existerotativo.disponible" required  >
+    </ion-list>
+
+    <ion-grid class="espacio" style="padding-top:20px">
+      <div style="padding-left: 20px; padding-right: 20px; background-color: transparent" align="center">
+        <button type="submit" [disabled]="solicituddesembolso.invalid" class="btn btn-outline-danger" >Solicitar</button>
+      </div>
+    </ion-grid>
+  </form>
+
+</ion-content>

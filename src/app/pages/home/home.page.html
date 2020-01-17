@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleMenu()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <ion-title>Inicio</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngFor="let aporte of aportes">
+    <ion-card-header color="primary" ><p style="text-transform: uppercase">{{aporte.descripcion}}</p></ion-card-header>
+    <ion-grid >
+      <ion-row><ion-col>Saldo:</ion-col> <ion-col class="alin">{{aporte.saldo}}</ion-col></ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+
+</ion-content>

@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleMenu()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <ion-title>Simulador de crédito</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div padding *ngIf="!resultadosimulacion">
+    <ion-label>Complete los datos para simular su crédito</ion-label>
+    <form #formsim="ngForm" (ngSubmit)="simular()">
+      <div class="col-auto" style="padding-top: 20px">
+        <label class="sr-only" for="monto">Monto</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><ion-icon name="cash"></ion-icon></div>
+          </div>
+          <input type="number" class="form-control" id="monto" name="monto" [(ngModel)]="simcyf.monto" placeholder="Monto" required >
+
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="sr-only" for="linea">Linea</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><ion-icon name="add"></ion-icon></div>
+          </div>
+          <select name="linea" id="linea" class="form-control" [(ngModel)]="simcyf.codlinea" required (change)="getPlazos($event)" >
+            <option value="" disabled >Línea</option>
+            <option *ngFor="let linea of lineas" value="{{linea.cons_licr}}">{{linea.nomb_licr}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="sr-only" for="plazo">Plazo</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><ion-icon name="alert"></ion-icon></div>
+          </div>
+          <select name="plazo" id="plazo" class="form-control" [(ngModel)]="simcyf.plazocred" required (change)="getTasas($event)" *ngIf="plazos" >
+            <option value="" disabled>Plazo</option>
+            <option *ngFor="let plazo of plazos" value="{{plazo.plin_mese}}">{{plazo.plin_mese}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-auto">
+        <label class="sr-only" for="frecuencia">Frecuencia</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><ion-icon name="calculator"></ion-icon></div>
+          </div>
+          <select name="frecuencia" id="frecuencia" class="form-control" [(ngModel)]="simcyf.frecuencia" required>
+            <option value="" disabled>Frecuencia</option>
+            <option value="M">Mensual</option>
+            <!--<option value="Q">Quincenal</option>-->
+          </select>
+        </div>
+      </div>
+
+      <div class="col-auto" *ngIf="tasas">
+        <label class="sr-only" for="tasa">Tasa</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><ion-icon name="cash"></ion-icon></div>
+          </div>
+          <input  type="text" class="form-control" id="tasa" name="tasa" placeholder="Tasa" [(ngModel)]="simcyf.tasa" required readonly>
+        </div>
+      </div>
+
+      <div class="col-auto" >
+        <label class="sr-only" for="fecha_desembolso">Fecha</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><ion-icon name="calendar"></ion-icon></div>
+          </div>
+          <ion-datetime placeholder="Fecha desembolso" name="fecha_desembolso" id="fecha_desembolso" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" class="form-control"  [(ngModel)]="simcyf.fechadesembolso" required></ion-datetime>
+        </div>
+      </div>
+
+      <div class="col-auto" >
+        <label class="sr-only" for="fecha_ppago">Fecha pr</label>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text"><ion-icon name="calendar"></ion-icon></div>
+          </div>
+          <ion-datetime placeholder="Fecha primera cuota" name="fecha_ppago" id="fecha_ppago" displayFormat="YYYY-MM-DD" pickerFormat="YYYY-MM-DD" class="form-control" [(ngModel)]="simcyf.fechapcuota" required></ion-datetime>
+        </div>
+      </div>
+
+      <div class="col-auto" >
+        <ion-button type="submit" expand="full" color="primary" [disabled]="formsim.form.invalid">Calcular</ion-button>
+      </div>
+
+
+    </form>
+  </div>
+
+  <ion-card *ngFor="let resultado of resultadosimulacion">
+    <ion-card-header color="primary" >Cuota No - {{resultado.numero}}</ion-card-header>
+    <ion-grid >
+      <ion-row><ion-col>Fecha:</ion-col> <ion-col class="alin">{{resultado.fecha}}</ion-col></ion-row>
+      <ion-row><ion-col>Capital:</ion-col> <ion-col class="alin">{{resultado.capital |number}}</ion-col></ion-row>
+      <ion-row><ion-col>Interes:</ion-col> <ion-col class="alin">{{resultado.interes|number}}</ion-col></ion-row>
+      <ion-row><ion-col>Seguro:</ion-col> <ion-col class="alin">{{resultado.seguro|number}}</ion-col></ion-row>
+      <ion-row><ion-col>Cuota:</ion-col> <ion-col class="alin">{{resultado.total|number}}</ion-col></ion-row>
+      <ion-row><ion-col>Saldo:</ion-col> <ion-col class="alin">{{resultado.saldo|number}}</ion-col></ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-grid *ngIf="resultadosimulacion" >
+    <ion-button (click)="nuevo()" expand="full" color="primary">Nueva simulación</ion-button>
+  </ion-grid>
+
+</ion-content>

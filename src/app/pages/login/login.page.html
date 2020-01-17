@@ -1,0 +1,49 @@
+
+
+<ion-content style="padding-bottom: 20px" class="ion-padding">
+  <div class="login">
+
+    <div class="box">
+      <div>
+        <ion-grid class="padding" padding>
+          <ion-row>
+            <ion-col col-12 ion-item no-lines no-padding text-center align="center"><img src="/assets/ultima.png" alt="" height="70px" align="center"></ion-col>
+          </ion-row>
+
+        </ion-grid>
+        <ion-grid padding>
+          <form #formulario="ngForm" (ngSubmit)="onSubmit(formulario)" class="list-form">
+
+
+          <div class="col-12 col-lg-8 col-md-8 offset-md-2">
+            <ion-input class="form-control" padding type="text" value="" name="usuario" [(ngModel)]="user.usuario" required placeholder="Usuario"></ion-input>
+          </div>
+
+          <div style="padding: 5px"></div>
+
+          <div class="col-12 col-lg-8 col-md-8 offset-md-2">
+            <ion-input class="form-control" type="password" padding value="" name="password" [(ngModel)]="user.password" required="" placeholder="Contraseña"></ion-input>
+          </div>
+
+          <div class="col-12 col-lg-8 col-md-8 offset-md-2">
+            <ion-buttons class="padding20">
+              <ion-label color="primary"><a href="" routerLink="/reset">Olvidé mi contraseña</a></ion-label>
+            </ion-buttons>
+          </div>
+
+
+            <div class="col-12 col-lg-8 col-md-8 offset-md-2">
+              <ion-button expand="full" type="sudmit" [disabled]="formulario.invalid">Ingresar</ion-button>
+            </div>
+
+          </form>
+
+        </ion-grid>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+
+
+

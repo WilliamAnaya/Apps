@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Contáctenos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-label>Nuestra línea te permite realizar todas tus consultas de manera ágil  y segura</ion-label>
+  </ion-grid>
+  <ion-list>
+    <ion-item>
+      <ion-label> Teléfono: </ion-label><ion-icon name="call" color="primary"></ion-icon> <ion-label><a href="tel:0317561555">031 7561555 </a>  </ion-label>
+    </ion-item>
+  </ion-list>
+  <!--<ion-list>
+    <ion-item>
+      <ion-label> Celúlar: </ion-label><ion-icon name="phone-portrait" color="primary"></ion-icon> <ion-label><a
+            href="tel:3505851645">350 5851645</a>  </ion-label>
+    </ion-item>
+  </ion-list>-->
+
+  <ion-grid style="padding-top: 20px">
+    <ion-label class="centrar">Formulario de contácto</ion-label>
+    <form #contacto="ngForm" (ngSubmit)="onSubmit(contacto)">
+      <ion-list class="espacio">
+          <ion-textarea value=""  [(ngModel)]="contact.message"  name="message" required placeholder="Escriba su mensaje" class="form-control"></ion-textarea>
+      </ion-list>
+
+      <ion-grid class="espacio">
+        <div class="col-12 col-lg-8 col-md-8 offset-md-2">
+          <ion-button expand="full" type="sudmit" [disabled]="contacto.invalid">Enviar</ion-button>
+        </div>
+      </ion-grid>
+
+
+    </form>
+  </ion-grid>
+
+
+
+
+
+</ion-content>

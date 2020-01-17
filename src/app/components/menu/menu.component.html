@@ -1,0 +1,42 @@
+<ion-menu side="start" menuId="first" contentId="principal">
+  <ion-header>
+    <ion-toolbar color="light">
+      <ion-title text-center><img src="/assets/ultima.png" height="40px" alt=""></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+
+    <ion-grid>
+      <ion-col size-sm="12">
+      <img src="/assets/usuario.png" style="margin:0px auto;
+	display:block;">
+        <h6 align="center" *ngIf="identity">{{identity.name+ ' '+identity.surname}}</h6>
+       <div text-center=""><ion-label color="primary">-------</ion-label></div>
+        <!--<div text-center="" style="padding-bottom: 20px; font-size: 10pt"><ion-label *ngIf="identity">Último ingreso: {{identity.fhaultimo}}</ion-label></div>-->
+      </ion-col>
+      <ion-col>
+
+      </ion-col>
+    </ion-grid>
+
+
+    <ion-list class="padding20" >
+      <ion-menu-toggle *ngFor="let menu of componentes | async">
+        <ion-item [routerLink]="menu.redirectTo" >
+          <ion-img [src]="menu.icon" slot="start" style="width: 30px; height: 30px;"></ion-img>
+          <!--<ion-icon slot="start" [name]="menu.icon" color="primary"></ion-icon>-->
+          <ion-label>{{menu.name}}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+
+    </ion-list>
+
+<div style="padding-top: 30px; padding-left: 20px; padding-right: 20px">
+  <ion-menu-toggle>
+      <ion-button expand="block" vertical="bottom" horizontal="end" routerLink="/salir/1">Cerrar sesión</ion-button>
+  </ion-menu-toggle>
+</div>
+
+  </ion-content>
+</ion-menu>

@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleMenu()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <ion-title>Noticias</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true"  class="full">
+    <ion-slide *ngFor="let noticia of noticias">
+      <div class="container">
+        <ion-img src="{{noticia.imagen}}"></ion-img>
+      </div>
+
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

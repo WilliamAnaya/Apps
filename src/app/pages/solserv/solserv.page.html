@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/solicitudes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Solicitud de servicios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form #contacto="ngForm" (ngSubmit)="onSubmit()">
+    <ion-list class="espacio">
+      <select name="servicio" id="servicio" class="form-control" [(ngModel)]="servicios.servicio" required (change)="getOption($event)" >
+        <option value="" disabled >Seleccione una opción</option>
+        <option value="1">Modificación de la cuota de aporte mensual</option>
+        <option value="2">Modificación de la cuota FONKIDS</option>
+        <option value="3">Modificación de la cuota de ahorros vacaciones</option>
+        <option value="4">Modificación de la cuota de ahorro voluntario</option>
+      </select>
+    </ion-list>
+    <ion-list *ngIf="valor">
+      <input type="number" class="form-control" id="valor" name="valor" [(ngModel)]="servicios.valor" placeholder="Valor total a ahorrar" required >
+    </ion-list>
+    <ion-list *ngIf="porcentaje">
+      <select name="plazo" id="plazo" class="form-control" [(ngModel)]="servicios.porcentaje" required>
+        <option value="" disabled>Seleccione una opción</option>
+        <option value="3%">3%</option>
+        <option value="4%">4%</option>
+        <option value="5%">5%</option>
+        <option value="6%">6%</option>
+        <option value="7%">7%</option>
+        <option value="8%">8%</option>
+        <option value="9%">9%</option>
+        <option value="10%">10%</option>
+      </select>
+    </ion-list>
+    <ion-list class="espacio">
+      <input type="number" class="form-control" id="telfono" name="telefono" [(ngModel)]="servicios.telefono" placeholder="Teléfono de contacto" required >
+    </ion-list>
+    <ion-list class="espacio">
+      <input type="number" class="form-control" id="celular" name="celular" [(ngModel)]="servicios.celular" placeholder="Celular de contacto" required >
+    </ion-list>
+
+    <ion-grid class="espacio">
+      <div style="padding-left: 20px; padding-right: 20px; background-color: transparent" align="center">
+        <button type="submit" [disabled]="contacto.invalid" class="btn btn-outline-danger">Enviar mensaje</button>
+      </div>
+    </ion-grid>
+
+
+  </form>
+
+</ion-content>

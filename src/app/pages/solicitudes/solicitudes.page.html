@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleMenu()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <ion-title>Solicitudes</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item routerLink="/tabs/consultadecredito" >
+      <ion-label>Consulta de crédito</ion-label>
+    </ion-item>
+    <ion-item routerLink="/tabs/solcre">
+      <ion-label>Solicitud de crédito rotativo</ion-label>
+    </ion-item>
+    <ion-item routerLink="/tabs/solserv">
+      <ion-label>Solicitud de servicios</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/cartera"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Opciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-col><ion-button size="small" (click)="getMvtos()">Mvtos</ion-button></ion-col>
+    <ion-col><ion-button size="small" (click)="getPlandepagos()">Plan de pagos</ion-button></ion-col>
+    <ion-col><ion-button size="small" (click)="getPagosfuturos()">Pagos pdts</ion-button></ion-col>
+  </ion-grid>
+
+
+  <ion-card *ngFor="let mvto of mvtos">
+    <ion-card-header color="primary" ><p style="text-transform: uppercase">MOVIMIENTOS PAGARÉ - {{mvto.pagare}}</p></ion-card-header>
+      <ion-grid >
+        <ion-row><ion-col>Cuota:</ion-col> <ion-col class="alin">{{mvto.nrocuota}}</ion-col></ion-row>
+        <ion-row><ion-col>Fecha:</ion-col> <ion-col class="alin">{{mvto.fecha}}</ion-col></ion-row>
+        <ion-row><ion-col>Capital:</ion-col> <ion-col class="alin">{{mvto.capital}}</ion-col></ion-row>
+        <ion-row><ion-col>Interes:</ion-col> <ion-col class="alin">{{mvto.interes}}</ion-col></ion-row>
+        <ion-row><ion-col>Intmora:</ion-col> <ion-col class="alin">{{mvto.intmora}}</ion-col></ion-row>
+        <ion-row><ion-col>Seguro:</ion-col> <ion-col class="alin">{{mvto.seguro}}</ion-col></ion-row>
+        <ion-row><ion-col>Saldo:</ion-col> <ion-col class="alin">{{mvto.saldo}}</ion-col></ion-row>
+        <ion-row><ion-col>Total:</ion-col> <ion-col class="alin">{{mvto.total}}</ion-col></ion-row>
+      </ion-grid>
+  </ion-card>
+
+
+  <ion-card *ngFor="let plan of plandepagos">
+    <ion-card-header color="primary" ><p style="text-transform: uppercase">PLAN DE PAGOS - {{plan.pagare}}</p></ion-card-header>
+      <ion-grid >
+        <ion-row><ion-col>Cuota:</ion-col> <ion-col class="alin">{{plan.nrocuota}}</ion-col></ion-row>
+        <ion-row><ion-col>Fecha:</ion-col> <ion-col class="alin">{{plan.fecha}}</ion-col></ion-row>
+        <ion-row><ion-col>Capital:</ion-col> <ion-col class="alin">{{plan.capital}}</ion-col></ion-row>
+        <ion-row><ion-col>Interes:</ion-col> <ion-col class="alin">{{plan.interes}}</ion-col></ion-row>
+        <ion-row><ion-col>Cuota:</ion-col> <ion-col class="alin">{{plan.cuota}}</ion-col></ion-row>
+        <ion-row><ion-col>Seguro:</ion-col> <ion-col class="alin">{{plan.seguro}}</ion-col></ion-row>
+        <ion-row><ion-col>Saldo:</ion-col> <ion-col class="alin">{{plan.saldo}}</ion-col></ion-row>
+        <ion-row><ion-col>Total:</ion-col> <ion-col class="alin">{{plan.total}}</ion-col></ion-row>
+      </ion-grid>
+  </ion-card>
+
+  <ion-card *ngFor="let pago of pagosfuturos">
+    <ion-card-header color="primary" ><p style="text-transform: uppercase">PAGOS FUTUROS - {{pago.pagare}}</p></ion-card-header>
+    <ion-grid >
+      <ion-row><ion-col>Cuota:</ion-col> <ion-col class="alin">{{pago.nrocuota}}</ion-col></ion-row>
+      <ion-row><ion-col>Fecha:</ion-col> <ion-col class="alin">{{pago.fecha}}</ion-col></ion-row>
+      <ion-row><ion-col>Capital:</ion-col> <ion-col class="alin">{{pago.capital}}</ion-col></ion-row>
+      <ion-row><ion-col>Interes:</ion-col> <ion-col class="alin">{{pago.interes}}</ion-col></ion-row>
+      <ion-row><ion-col>Cuota:</ion-col> <ion-col class="alin">{{pago.cuota}}</ion-col></ion-row>
+      <ion-row><ion-col>Seguro:</ion-col> <ion-col class="alin">{{pago.seguro}}</ion-col></ion-row>
+      <ion-row><ion-col>Saldo:</ion-col> <ion-col class="alin">{{pago.saldo}}</ion-col></ion-row>
+      <ion-row><ion-col>Total:</ion-col> <ion-col class="alin">{{pago.total}}</ion-col></ion-row>
+    </ion-grid>
+  </ion-card>
+
+
+
+
+</ion-content>

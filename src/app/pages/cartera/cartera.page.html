@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleMenu()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+    <ion-title>Cartera</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card *ngFor="let cart of cartera">
+    <ion-card-header color="primary" *ngIf="cart.descripcion != 'TOTALES'"><p style="text-transform: uppercase">CARTERA - {{cart.descripcion}}</p></ion-card-header>
+
+        <ion-grid *ngIf="cart.descripcion != 'TOTALES'">
+          <ion-row><ion-col>Pagaré:</ion-col> <ion-col class="alin">{{cart.pagare}}</ion-col></ion-row>
+          <ion-row><ion-col>Nro cta:</ion-col> <ion-col class="alin">{{cart.nrocta}}</ion-col></ion-row>
+          <ion-row><ion-col>Monto:</ion-col> <ion-col class="alin">{{cart.monto}}</ion-col></ion-row>
+          <ion-row><ion-col>Plazo:</ion-col> <ion-col class="alin">{{cart.plazo}}</ion-col></ion-row>
+          <ion-row><ion-col>Tasa (N.A):</ion-col> <ion-col class="alin">{{cart.tasa}}</ion-col></ion-row>
+          <ion-row><ion-col>Cuota:</ion-col> <ion-col class="alin">{{cart.ctafija}}</ion-col></ion-row>
+          <ion-row><ion-col>Fha prox pago:</ion-col> <ion-col class="alin">{{cart.fhaproxpago}}</ion-col></ion-row>
+          <ion-row><ion-col>Saldo:</ion-col> <ion-col class="alin">{{cart.saldoactual}}</ion-col></ion-row>
+          <ion-row><ion-col></ion-col> <ion-col class="alin"><a routerLink="/tabs/mvto/{{cart.pagare}}" href="">Ver mas opciones</a></ion-col></ion-row>
+        </ion-grid>
+
+  </ion-card>
+
+
+
+
+
+</ion-content>
