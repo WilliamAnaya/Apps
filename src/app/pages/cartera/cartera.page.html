@@ -14,6 +14,9 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-card *ngIf="!cartera">
+    <ion-card-header color="primary" class="ion-text-center">NO TIENES PRODUCTOS POR VISUALIZAR</ion-card-header>
+  </ion-card>
 
   <ion-card *ngFor="let cart of cartera">
     <ion-card-header color="primary" *ngIf="cart.descripcion != 'TOTALES'"><p style="text-transform: uppercase">CARTERA - {{cart.descripcion}}</p></ion-card-header>

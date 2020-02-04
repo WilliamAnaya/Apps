@@ -50,8 +50,11 @@ export class AhorrosPage implements OnInit {
     this.Service.ahorros(this.user).subscribe(
         response =>{
           //devuelve token
-          this.ahorros = response;
           loading.dismiss();
+          if (response.length !== 1 && response[0].codahorro !== null) {
+            this.ahorros = response;
+          }
+
         },
         error =>{
           console.log(<any>error);

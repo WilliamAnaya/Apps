@@ -14,55 +14,55 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: '../home/home.module#HomePageModule'
+        loadChildren: () => import('../home/home.module').then(m => m.HomePageModule)
       },
       {
         path: 'ahorros',
-        loadChildren: '../ahorros/ahorros.module#AhorrosPageModule'
+        loadChildren: () => import('../ahorros/ahorros.module').then(m => m.AhorrosPageModule)
       },
       {
         path: 'contactenos',
-        loadChildren: '../contactenos/contactenos.module#ContactenosPageModule'
+        loadChildren: () => import('../contactenos/contactenos.module').then(m => m.ContactenosPageModule)
       },
       {
         path: 'noticias',
-        loadChildren: '../noticias/noticias.module#NoticiasPageModule'
+        loadChildren: () => import('../noticias/noticias.module').then(m => m.NoticiasPageModule)
       },
       {
         path: 'servicios',
-        loadChildren: '../servicios/servicios.module#ServiciosPageModule'
+        loadChildren: () => import('../servicios/servicios.module').then(m => m.ServiciosPageModule)
       },
       {
         path: 'cartera',
-        loadChildren: '../cartera/cartera.module#CarteraPageModule'
+        loadChildren: () => import('../cartera/cartera.module').then(m => m.CarteraPageModule)
       },
       {
         path: 'mvto/:pagare',
-        loadChildren: '../mvto/mvto.module#MvtoPageModule'
+        loadChildren: () => import('../mvto/mvto.module').then(m => m.MvtoPageModule)
       },
       {
         path: 'simulador',
-        loadChildren: '../simulador/simulador.module#SimuladorPageModule'
+        loadChildren: () => import('../simulador/simulador.module').then(m => m.SimuladorPageModule)
       },
       {
         path: 'notificaciones',
-        loadChildren: '../notificaciones/notificaciones.module#NotificacionesPageModule'
+        loadChildren: () => import('../notificaciones/notificaciones.module').then(m => m.NotificacionesPageModule)
       },
       {
         path: 'solicitudes',
-        loadChildren: '../solicitudes/solicitudes.module#SolicitudesPageModule'
+        loadChildren: () => import('../solicitudes/solicitudes.module').then(m => m.SolicitudesPageModule)
       },
       {
         path: 'solcre',
-        loadChildren: '../solcre/solcre.module#SolcrePageModule'
+        loadChildren: () => import('../solcre/solcre.module').then(m => m.SolcrePageModule)
       },
       {
         path: 'consultadecredito',
-        loadChildren: '../consulcre/consulcre.module#ConsulcrePageModule'
+        loadChildren: () => import('../consulcre/consulcre.module').then(m => m.ConsulcrePageModule)
       },
       {
         path: 'solserv',
-        loadChildren: '../solserv/solserv.module#SolservPageModule'
+        loadChildren: () => import('../solserv/solserv.module').then(m => m.SolservPageModule)
       },
     ]
   }

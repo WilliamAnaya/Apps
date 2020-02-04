@@ -47,9 +47,10 @@ export class CarteraPage implements OnInit {
     this.Service.cartera(this.user).subscribe(
         response =>{
           //devuelve token
-          console.log(response);
-          this.cartera = response;
           loading.dismiss();
+          if (response.length !== 1 && response[0].pagare !== '') {
+            this.cartera = response;
+          }
         },
         error =>{
           console.log(<any>error);

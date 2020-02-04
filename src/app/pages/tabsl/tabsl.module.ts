@@ -14,15 +14,15 @@ const routes: Routes = [
     children: [
       {
         path: 'ingresar',
-        loadChildren: '../login/login.module#LoginPageModule'
+        loadChildren: () => import('../login/login.module').then(m => m.LoginPageModule)
       },
       {
         path: 'contactenos',
-        loadChildren: '../contactenos/contactenos.module#ContactenosPageModule'
+        loadChildren: () => import('../contactenos/contactenos.module').then(m => m.ContactenosPageModule)
       },
       {
         path: 'reset',
-        loadChildren: '../reset/reset.module#ResetPageModule'
+        loadChildren: () => import('../reset/reset.module').then(m => m.ResetPageModule)
       }
     ]
   }

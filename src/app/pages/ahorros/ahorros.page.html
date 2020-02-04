@@ -15,6 +15,10 @@
 
 <ion-content padding>
 
+  <ion-card *ngIf="!ahorros">
+    <ion-card-header color="primary" class="ion-text-center" >ACTUALMENTE NO TIENES ESTE PRODUCTO ACTIVO</ion-card-header>
+  </ion-card>
+
 
   <ion-card *ngFor="let ahorro of ahorros">
     <ion-card-header color="primary" ><p style="text-transform: uppercase">Ahorro - {{ahorro.descripcion}}</p></ion-card-header>
